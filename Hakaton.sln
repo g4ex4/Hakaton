@@ -11,7 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentati
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4DDBF8A4-0EDA-458C-8066-BB6A91A6B835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hakaton.Domain", "Hakaton.Domain\Hakaton.Domain.csproj", "{170DD919-366D-4870-ABF6-DA11224749B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hakaton.Domain", "Hakaton.Domain\Hakaton.Domain.csproj", "{170DD919-366D-4870-ABF6-DA11224749B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hakaton.Application", "Hakaton.Application\Hakaton.Application.csproj", "{F437C914-996A-43FA-90C2-C88F011B59CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hakaton.Persistance", "Hakaton.Persistance\Hakaton.Persistance.csproj", "{70B1E7CF-251C-469A-9510-5E9CB8B0B498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hakaton.WebApi", "Hakaton.WebApi\Hakaton.WebApi.csproj", "{4F8DEE00-04A7-4FE2-9131-1DF471C508A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +29,27 @@ Global
 		{170DD919-366D-4870-ABF6-DA11224749B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170DD919-366D-4870-ABF6-DA11224749B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{170DD919-366D-4870-ABF6-DA11224749B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F437C914-996A-43FA-90C2-C88F011B59CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F437C914-996A-43FA-90C2-C88F011B59CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F437C914-996A-43FA-90C2-C88F011B59CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F437C914-996A-43FA-90C2-C88F011B59CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B1E7CF-251C-469A-9510-5E9CB8B0B498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B1E7CF-251C-469A-9510-5E9CB8B0B498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B1E7CF-251C-469A-9510-5E9CB8B0B498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B1E7CF-251C-469A-9510-5E9CB8B0B498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8DEE00-04A7-4FE2-9131-1DF471C508A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8DEE00-04A7-4FE2-9131-1DF471C508A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8DEE00-04A7-4FE2-9131-1DF471C508A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8DEE00-04A7-4FE2-9131-1DF471C508A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{170DD919-366D-4870-ABF6-DA11224749B7} = {5E595E9E-740D-4C23-9763-24840876F5D3}
+		{F437C914-996A-43FA-90C2-C88F011B59CD} = {5E595E9E-740D-4C23-9763-24840876F5D3}
+		{70B1E7CF-251C-469A-9510-5E9CB8B0B498} = {B1FE3D3B-8C27-4E6D-880B-0DAF46C572FB}
+		{4F8DEE00-04A7-4FE2-9131-1DF471C508A0} = {C72D61D9-31AF-431F-ADBC-59BA41BE50D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47AC4339-0A08-480D-94F7-438585402166}
