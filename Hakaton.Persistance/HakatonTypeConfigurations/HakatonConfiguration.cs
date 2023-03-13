@@ -11,7 +11,6 @@ namespace Hakaton.Persistance.HakatonTypeConfigurations
             builder.HasKey(user => user.Id);
             builder.HasIndex(user => user.Id).IsUnique();
 
-
         }
     }
 }

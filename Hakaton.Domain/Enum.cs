@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hakaton.Domain
 {
-    public abstract class BaseEntity
+    internal class Enum
     {
-        public int Id { get; set; }
     }
 }
