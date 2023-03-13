@@ -3,9 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5E595E9E-740D-4C23-9763-24840876F5D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B1FE3D3B-8C27-4E6D-880B-0DAF46C572FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{C72D61D9-31AF-431F-ADBC-59BA41BE50D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4DDBF8A4-0EDA-458C-8066-BB6A91A6B835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hakaton.Domain", "Hakaton.Domain\Hakaton.Domain.csproj", "{170DD919-366D-4870-ABF6-DA11224749B7}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{170DD919-366D-4870-ABF6-DA11224749B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170DD919-366D-4870-ABF6-DA11224749B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170DD919-366D-4870-ABF6-DA11224749B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170DD919-366D-4870-ABF6-DA11224749B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{170DD919-366D-4870-ABF6-DA11224749B7} = {5E595E9E-740D-4C23-9763-24840876F5D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47AC4339-0A08-480D-94F7-438585402166}
