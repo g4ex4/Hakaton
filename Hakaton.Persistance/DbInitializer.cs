@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Hakaton.Persistance
 {
-    internal class DbInitializer
+    public class DbInitializer
     {
+        public static void Initialize(HakatonDbContext context)
+        {
+            context.Database.EnsureCreated();
+        }
     }
 }

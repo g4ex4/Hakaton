@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Hakaton.Application.Interfaces;
+using Hakaton.Domain;
+using Hakaton.Persistance.HakatonTypeConfigurations;
+
 
 namespace Hakaton.Persistance
 {
-    internal class IHakatonDbContext
+    public class HakatonDbContext : DbContext, IHakatonDbContext
     {
+        public DbSet<User> Users { get; set; }
+        public HakatonDbContext(DbContextOptions<HakatonDbContext> options) : base(options) { }
+
+        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new HakatonConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

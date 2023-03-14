@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Hakaton.Application.Common.Mappings
 {
-    internal interface Interface1
+    public interface IMapwith<T>
     {
+        void Mapping(Profile profile) =>
+            profile.CreateMap(typeof(T), GetType());
     }
 }

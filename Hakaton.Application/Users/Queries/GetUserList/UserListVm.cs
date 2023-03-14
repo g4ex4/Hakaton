@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Hakaton.Application.Users.Queries.GetUserList
 {
-    internal class UserListVm
+    public class UserListVm
     {
-    }
+        public IList<UserLookupDto> Users { get; set; }
+    }   
 }

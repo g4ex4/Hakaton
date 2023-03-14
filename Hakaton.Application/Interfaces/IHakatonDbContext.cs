@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hakaton.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hakaton.Application.Interfaces
 {
-    internal class IHakatonDbContext
+    public interface IHakatonDbContext
     {
+        DbSet<User> Users { get; set; }
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Hakaton.Application.Users.Queries.GetUserList
 {
-    internal class GetUserListQuery
+    public class GetUserListQuery : IRequest<UserListVm>
     {
+        public Guid Id { get; set; }
     }
 }

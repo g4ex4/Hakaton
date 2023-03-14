@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Hakaton.Domain
 {
-    internal class Enum
+    public enum Role
     {
+        User,
+        Moderator,
+        Admin
     }
 }
