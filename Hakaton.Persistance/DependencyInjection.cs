@@ -10,12 +10,12 @@ namespace Hakaton.Persistance
         public static IServiceCollection AddPersistance (this IServiceCollection
             services, IConfiguration configuration)
         {
-            var connectionString = configuration["DbConnection"];
+            var connectionString = configuration["ConnectionString"];
             services.AddDbContext<HakatonDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
-            services.AddScoped<IHakatonDbContext>(provider =>
+            services.AddScoped<INotesDbContext>(provider =>
             provider.GetService<HakatonDbContext>());
             return services;
         }

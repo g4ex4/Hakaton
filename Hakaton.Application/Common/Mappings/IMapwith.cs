@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hakaton.Application.Common.Mappings
 {
-    public interface IMapwith<T>
+    public interface IMapWith<T>
     {
         void Mapping(Profile profile) =>
             profile.CreateMap(typeof(T), GetType());
