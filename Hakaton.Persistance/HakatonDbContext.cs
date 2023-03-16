@@ -3,11 +3,12 @@ using Hakaton.Application.Interfaces;
 using Hakaton.Domain;
 using Hakaton.Persistance.HakatonTypeConfigurations;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Hakaton.Persistance
 {
-    public class HakatonDbContext : DbContext, INotesDbContext
+    public class HakatonDbContext :IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid> ,INotesDbContext
     {
         public DbSet<Note> Notes { get; set; }
 
