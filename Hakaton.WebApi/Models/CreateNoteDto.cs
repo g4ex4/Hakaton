@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using Hakaton.Application.Common.Mappings;
 using Hakaton.Application.Users.Commands.CreateUser;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hakaton.WebApi.Models
 {
-    public class CreateNoteDto
+    public class CreateNoteDto : IMapWith<CreateNoteCommand>
     {
         [Required]
         public string Title { get; set; }

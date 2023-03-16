@@ -4,6 +4,6 @@ namespace Hakaton.Application.Users.Queries.GetUserList
 {
     public class GetNoteListQuery : IRequest<NoteListVm>
     {
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
     }   
 }

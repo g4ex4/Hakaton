@@ -26,7 +26,7 @@ namespace Hakaton.WebApi.Controllers
             return Ok(vm);
         }
         [HttpGet("GetById")]
-        public async Task<ActionResult<NoteDetailsVm>> Get([FromBody] Guid id)
+        public async Task<ActionResult<NoteDetailsVm>> Get(Guid id)
         {
             var query = new GetNoteDetailsQuery
             {

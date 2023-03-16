@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hakaton.Persistance.Migrations
 {
     [DbContext(typeof(HakatonDbContext))]
-    [Migration("20230316063902_AddedNotes")]
+    [Migration("20230316134851_AddedNotes")]
     partial class AddedNotes
     {
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace Hakaton.Persistance.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");

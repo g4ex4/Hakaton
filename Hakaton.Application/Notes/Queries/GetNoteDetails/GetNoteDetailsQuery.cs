@@ -9,7 +9,7 @@ namespace Hakaton.Application.Users.Queries.GetUserDetails
 {
     public class GetNoteDetailsQuery: IRequest<NoteDetailsVm>
     {
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         public Guid Id { get; set; }
     }
 }
