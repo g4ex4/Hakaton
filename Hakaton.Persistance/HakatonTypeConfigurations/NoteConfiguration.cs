@@ -11,6 +11,7 @@ namespace Hakaton.Persistance.HakatonTypeConfigurations
             builder.HasKey(note => note.Id);
             builder.HasIndex(note => note.Id).IsUnique();
             builder.Property(note => note.Title).HasMaxLength(250);
+
         }
     }
 }

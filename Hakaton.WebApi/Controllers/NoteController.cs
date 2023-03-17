@@ -5,6 +5,7 @@ using Hakaton.Application.Users.Commands.UpdateUser;
 using Hakaton.Application.Users.Queries.GetUserDetails;
 using Hakaton.Application.Users.Queries.GetUserList;
 using Hakaton.WebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hakaton.WebApi.Controllers
@@ -16,6 +17,7 @@ namespace Hakaton.WebApi.Controllers
 
         public NoteController(IMapper mapper) => _mapper = mapper;
         [HttpGet("GetAll")]
+        [Authorize]
         public async Task<ActionResult<NoteListVm>> GetAll()
         {
             var query = new GetNoteListQuery
@@ -26,6 +28,7 @@ namespace Hakaton.WebApi.Controllers
             return Ok(vm);
         }
         [HttpGet("GetById")]
+        [Authorize]
         public async Task<ActionResult<NoteDetailsVm>> Get(Guid id)
         {
             var query = new GetNoteDetailsQuery
@@ -38,6 +41,7 @@ namespace Hakaton.WebApi.Controllers
         }
 
         [HttpPost("Create")]
+        [Authorize]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateNoteDto createNoteDto)
         {
             var command = _mapper.Map<CreateNoteCommand>(createNoteDto);
@@ -46,6 +50,7 @@ namespace Hakaton.WebApi.Controllers
             return Ok(noteId);
         }
         [HttpPut("Update")]
+        [Authorize]
         public async Task<IActionResult> Update([FromBody] UpdateNoteDto updateNoteDto)
         {
             var command = _mapper.Map<UpdateNoteCommand>(updateNoteDto);
@@ -54,6 +59,7 @@ namespace Hakaton.WebApi.Controllers
             return NoContent();
         }
         [HttpDelete("Delete")]
+        [Authorize]
         public async Task<IActionResult> Delete([FromBody] Guid id)
         {
             var command = new DeleteNoteCommand
