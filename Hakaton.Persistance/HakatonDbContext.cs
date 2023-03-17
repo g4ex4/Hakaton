@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 
 namespace Hakaton.Persistance
 {
-    public class HakatonDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>, INotesDbContext
+    public class HakatonDbContext : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>, INotesDbContext
     {
         public DbSet<Note> Notes { get; set; }
 

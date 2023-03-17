@@ -9,6 +9,6 @@ namespace Hakaton.Domain
 {
     public class User : IdentityUser<Guid>
     {
-        public List<Note> Notes { get; set; }
+        public List<Note>? Notes { get; set; }
     }
 }
