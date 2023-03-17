@@ -15,7 +15,8 @@ namespace SimpleAPI.Api.Controllers
         private readonly UserManager<IdentityUser<Guid>> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
 
-        public AuthController(UserManager<IdentityUser<Guid>> userManager, RoleManager<IdentityRole<Guid>> roleManager)
+        public AuthController(UserManager<IdentityUser<Guid>> userManager,
+            RoleManager<IdentityRole<Guid>> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -56,10 +57,6 @@ namespace SimpleAPI.Api.Controllers
         [HttpPost("/role/set")]
         public async Task SetRole(Guid userId, Guid roleId)
         {
-            //if (register.Password != register.ConfirmPasseord)
-            //{
-            //    throw new Exception();
-            //}
 
             var role = await _roleManager.FindByIdAsync(roleId.ToString());
             if (role is null)
@@ -122,8 +119,13 @@ namespace SimpleAPI.Api.Controllers
 
             await Request.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), new AuthenticationProperties()
             {
-                IsPersistent = login.RemeberMe
+                IsPersistent = login.RememberMe
             });
+        }
+        [HttpPost("logout")]
+        public async Task Logout()
+        { 
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
         private async Task<ClaimsIdentity> GetIdentityAsync(IdentityUser<Guid> user)
