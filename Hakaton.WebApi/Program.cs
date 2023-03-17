@@ -3,7 +3,11 @@ using Hakaton.Application.Common.Mappings;
 using Hakaton.Application.Interfaces;
 using Hakaton.Persistance;
 using Hakaton.WebApi.Middleware;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +26,41 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>(options =>
+{
+    options.Password.RequiredLength = 6;
+})
+    .AddEntityFrameworkStores<HakatonDbContext>();
+
+
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(options => options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => {
+        options.Events.OnRedirectToAccessDenied = context =>
+        {
+            context.Response.StatusCode = 403;
+            return Task.CompletedTask;
+        };
+        options.Events.OnRedirectToLogin = context =>
+        {
+            context.Response.StatusCode = 401;
+            return Task.CompletedTask;
+        };
+    }
+    );
+
+builder.Services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.Events.OnRedirectToAccessDenied = new Func<RedirectContext<CookieAuthenticationOptions>, Task>(context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return context.Response.CompleteAsync();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//app.UseCustomExceptionHandler();
+app.UseCustomExceptionHandler();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -33,6 +68,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

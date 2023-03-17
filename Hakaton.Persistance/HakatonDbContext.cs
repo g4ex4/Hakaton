@@ -3,11 +3,13 @@ using Hakaton.Application.Interfaces;
 using Hakaton.Domain;
 using Hakaton.Persistance.HakatonTypeConfigurations;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Hakaton.Persistance
 {
-    public class HakatonDbContext : DbContext, INotesDbContext
+    public class HakatonDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>, INotesDbContext
     {
         public DbSet<Note> Notes { get; set; }
 
@@ -18,6 +20,11 @@ namespace Hakaton.Persistance
         {
             builder.ApplyConfiguration(new NoteConfiguration());
             base.OnModelCreating(builder);
+             builder.Entity<Note>()
+            .HasOne(n => n.User)
+            .WithMany(u => u.Notes)
+            .HasForeignKey(n => n.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +39,5 @@ namespace Hakaton.Persistance
             optionsBuilder
                 .UseSqlServer(connectionString);
         }
-
     }
 }
