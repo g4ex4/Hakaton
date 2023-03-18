@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
-using System;
 using Hakaton.Application.Parser;
 using parser.Interfaces;
 using parser;
@@ -63,6 +62,15 @@ builder.Services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefa
         return context.Response.CompleteAsync();
     });
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -73,7 +81,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
-
+app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 

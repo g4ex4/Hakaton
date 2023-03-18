@@ -105,7 +105,7 @@ namespace SimpleAPI.Api.Controllers
             var user = await _userManager.FindByNameAsync(login.UserName);
             if (user == null)
             {
-                throw new Exception("User is not found");
+                throw new Exception("User is not found ");
             }
 
             var passwordCorrect = await _userManager.CheckPasswordAsync(user, login.Password);
