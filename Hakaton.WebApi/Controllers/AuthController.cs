@@ -27,7 +27,7 @@ namespace SimpleAPI.Api.Controllers
         {
             if (register.Password != register.ConfirmPasseord)
             {
-                throw new Exception();
+                throw new Exception("Password is miss macthing!");
             }
 
             var user = new IdentityUser<Guid>()
@@ -41,14 +41,14 @@ namespace SimpleAPI.Api.Controllers
 
             if (!identityResult.Succeeded)
             {
-                throw new Exception();
+                throw new Exception("Use upper case!");
             }
 
             identityResult = await _userManager.AddPasswordAsync(user, register.Password);
 
             if (!identityResult.Succeeded)
             {
-                throw new Exception();
+                throw new Exception("Use special symbol, number! MinLength=6!");
             }
 
             return user.Id;
