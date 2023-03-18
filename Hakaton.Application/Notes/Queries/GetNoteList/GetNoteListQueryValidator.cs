@@ -8,7 +8,7 @@ namespace Hakaton.Application.Notes.Queries.GetNoteList
     {
         public GetNoteListQueryValidator()
         {
-            //RuleFor(x => x.UserId).NotEqual(Guid.Empty);
+            RuleFor(x => x.UserId).NotEqual(Guid.Empty);
         }
     }
 }
