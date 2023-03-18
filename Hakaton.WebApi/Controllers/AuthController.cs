@@ -25,6 +25,11 @@ namespace SimpleAPI.Api.Controllers
         [HttpPost("register")]
         public async Task<Guid> Register(RegisterDto register)
         {
+            var existingUser = await _userManager.FindByNameAsync(register.UserName);
+            if (existingUser != null)
+            {
+                throw new Exception("User with this username already exists.");
+            }
             if (register.Password != register.ConfirmPasseord)
             {
                 throw new Exception("Password is miss macthing!");
