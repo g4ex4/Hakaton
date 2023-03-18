@@ -8,11 +8,17 @@ using Microsoft.AspNetCore.Authentication;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using System;
+using Hakaton.Application.Parser;
+using parser.Interfaces;
+using parser;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplication();
+builder.Services.AddScoped<IAirportCodeResolver, AirportCodeResolver>();
+builder.Services.AddScoped<IAirlineCodeResolver, AirlineCodeResolver>();
+builder.Services.AddTransient<ParseManager>();
 var scope = builder.Services.BuildServiceProvider().CreateScope();
 builder.Services.AddPersistance(builder.Configuration);
 builder.Services.AddAutoMapper(config =>

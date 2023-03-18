@@ -105,14 +105,14 @@ namespace SimpleAPI.Api.Controllers
             var user = await _userManager.FindByNameAsync(login.UserName);
             if (user == null)
             {
-                throw new Exception("");
+                throw new Exception("User is not found");
             }
 
             var passwordCorrect = await _userManager.CheckPasswordAsync(user, login.Password);
 
             if (!passwordCorrect)
             {
-                throw new Exception("");
+                throw new Exception("Password is not correct");
             }
 
             var identity = await GetIdentityAsync(user);
@@ -123,6 +123,7 @@ namespace SimpleAPI.Api.Controllers
             });
         }
         [HttpPost("logout")]
+        [Authorize]
         public async Task Logout()
         { 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
